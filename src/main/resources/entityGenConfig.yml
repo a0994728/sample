@@ -1,0 +1,10 @@
+# DB への接続情報
+jdbcSettings:
+  url: "jdbc:h2:tcp://localhost/~/sample"
+  username: "sa"
+  password: "sa"
+  driverClassName: "org.h2.Driver"
+
+# 生成したコードを置く package を指定
+packageName: "com.example.entity"
+outputDirectory: "D:/programing/sample/src/main/java"
