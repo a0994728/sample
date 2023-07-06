@@ -24,7 +24,7 @@ CREATE TABLE `tbl_country` (
 CREATE TABLE `tbl_city` (
   `city_id` int default '1',
   `city_name` char(35) DEFAULT '',
-  `country_code` char(3) DEFAULT '',
+  `country_code` char(3) NOT NULL DEFAULT '',
   `district` char(20) DEFAULT '',
   `city_population` int DEFAULT '0',
   PRIMARY KEY (`city_id`)

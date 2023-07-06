@@ -17,5 +17,5 @@ additionalCodeRules:
     # position: "Bottom"
     code: |
             @ManyToOne
-            @JoinColumn(name = "`country_code`")
+            @JoinColumn(name = "`country_code`", insertable = false, updatable = false)
             private TblCountry tblCountry;

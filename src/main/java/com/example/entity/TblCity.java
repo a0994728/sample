@@ -16,7 +16,7 @@ public class TblCity {
   @Column(name = "\"city_name\"", nullable = true)
   private String cityName;
 
-  @Column(name = "\"country_code\"", nullable = true)
+  @Column(name = "\"country_code\"", nullable = false)
   private String countryCode;
 
   @Column(name = "\"district\"", nullable = true)
@@ -26,6 +26,6 @@ public class TblCity {
   private Integer cityPopulation;
 
   @ManyToOne
-  @JoinColumn(name = "`country_code`")
+  @JoinColumn(name = "`country_code`", insertable = false, updatable = false)
   private TblCountry tblCountry;
 }
