@@ -1,4 +1,5 @@
 drop table if exists `tbl_city`;
+drop table if exists `tbl_country_language`;
 drop table if exists `tbl_country`;
 
 CREATE TABLE `tbl_country` (
@@ -20,7 +21,6 @@ CREATE TABLE `tbl_country` (
   PRIMARY KEY (`country_code`)
 );
 
-
 CREATE TABLE `tbl_city` (
   `city_id` int default '1',
   `city_name` char(35) DEFAULT '',
@@ -28,4 +28,12 @@ CREATE TABLE `tbl_city` (
   `district` char(20) DEFAULT '',
   `city_population` int DEFAULT '0',
   PRIMARY KEY (`city_id`)
+);
+
+CREATE TABLE `tbl_country_language` (
+  `country_code` char(3) DEFAULT '',
+  `language` char(30) DEFAULT '',
+  `is_official` enum('T','F') DEFAULT 'F',
+  `percentage` decimal(4,1) DEFAULT '0.0',
+  PRIMARY KEY (`country_code`,`language`)
 );

@@ -1,13 +1,14 @@
 package com.example.entity;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 import java.sql.*;
 import lombok.Data;
 
 @Data
 @Entity(name = "com.example.entity.TblCountry")
 @Table(name = "tbl_country")
-public class TblCountry {
+public class TblCountry implements Serializable {
 
   @Id
   @Column(name = "\"country_code\"", nullable = false)

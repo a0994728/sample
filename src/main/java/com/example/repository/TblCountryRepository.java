@@ -11,5 +11,4 @@ public interface TblCountryRepository
   public TblCountry findByCountryCode(String countryCode);
 
   public List<TblCountry> findByCountryName(String countryName);
-  // public List<TblCountry> searchCountryByName(TblCountry tblCountry);
 }

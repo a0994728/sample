@@ -11,6 +11,10 @@ packageName: "com.example.entity"
 # java等のインストールドライブとprojectのドライブが異なるため、entity生成先をフルパスで指定（変数化したい）
 outputDirectory: "D:/programing/github/sample/src/main/java"
 
+interfaceRules:
+  # If you just specify the interfaces, all the generated classes'll implement the interfaces.
+- interfaces: [{name: "java.io.Serializable"}]
+
 # TblCity entityにTblCountryを付与する
 additionalCodeRules:
   - className: "TblCity"

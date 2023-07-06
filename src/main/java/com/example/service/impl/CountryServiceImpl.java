@@ -1,6 +1,9 @@
 package com.example.service.impl;
 
 import com.example.entity.TblCountry;
+import com.example.model.AddNewCountryRequestBody;
+import com.example.model.AddNewCountryResponseBody;
+import com.example.model.GetAllCountriesResponseBody;
 import com.example.repository.TblCountryRepository;
 import com.example.service.CountryService;
 import java.util.List;
@@ -14,20 +17,26 @@ public class CountryServiceImpl implements CountryService {
   private TblCountryRepository tblCountryRepository;
 
   @Override
-  public String addNewCountry(String countryCode, String countryName) {
+  public AddNewCountryResponseBody addNewCountry(AddNewCountryRequestBody req) {
     System.out.println("addNewCountry called");
-
+    AddNewCountryResponseBody result = new AddNewCountryResponseBody();
     TblCountry tblCountry = new TblCountry();
-    tblCountry.setCountryCode(countryCode);
-    tblCountry.setCountryName(countryName);
+    tblCountry.setCountryCode(req.getCountryCode());
+    tblCountry.setCountryName(req.getCountryName());
     tblCountryRepository.save(tblCountry);
-    return "saved";
+
+    result.setDetail("0");
+    return result;
   }
 
   @Override
-  public Iterable<TblCountry> getAllCountries() {
+  public GetAllCountriesResponseBody getAllCountries() {
+    GetAllCountriesResponseBody result = new GetAllCountriesResponseBody();
     System.out.println("getAllCountries called");
-    return tblCountryRepository.findAll();
+    List<TblCountry> req = tblCountryRepository.findAll();
+    result.setListTblCountry(req);
+    result.setNumberOfCountry(req.size());
+    return result;
   }
 
   @Override
