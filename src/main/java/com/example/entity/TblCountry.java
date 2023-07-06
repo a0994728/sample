@@ -13,22 +13,22 @@ public class TblCountry {
   @Column(name = "\"country_code\"", nullable = false)
   private String countryCode;
 
-  @Column(name = "\"country_name\"", nullable = false)
+  @Column(name = "\"country_name\"", nullable = true)
   private String countryName;
 
-  @Column(name = "\"continent\"", nullable = false)
+  @Column(name = "\"continent\"", nullable = true)
   private String continent;
 
-  @Column(name = "\"region\"", nullable = false)
+  @Column(name = "\"region\"", nullable = true)
   private String region;
 
-  @Column(name = "\"surface_area\"", nullable = false)
+  @Column(name = "\"surface_area\"", nullable = true)
   private java.math.BigDecimal surfaceArea;
 
   @Column(name = "\"indep_year\"", nullable = true)
   private Short indepYear;
 
-  @Column(name = "\"country_population\"", nullable = false)
+  @Column(name = "\"country_population\"", nullable = true)
   private Integer countryPopulation;
 
   @Column(name = "\"life_expectancy\"", nullable = true)
@@ -40,10 +40,10 @@ public class TblCountry {
   @Column(name = "\"gnpold\"", nullable = true)
   private java.math.BigDecimal gnpold;
 
-  @Column(name = "\"local_name\"", nullable = false)
+  @Column(name = "\"local_name\"", nullable = true)
   private String localName;
 
-  @Column(name = "\"government_form\"", nullable = false)
+  @Column(name = "\"government_form\"", nullable = true)
   private String governmentForm;
 
   @Column(name = "\"head_of_state\"", nullable = true)
@@ -52,6 +52,6 @@ public class TblCountry {
   @Column(name = "\"capital\"", nullable = true)
   private Integer capital;
 
-  @Column(name = "\"code2\"", nullable = false)
+  @Column(name = "\"code2\"", nullable = true)
   private String code2;
 }

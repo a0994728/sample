@@ -13,19 +13,19 @@ public class TblCity {
   @Column(name = "\"city_id\"", nullable = false)
   private Integer cityId;
 
-  @Column(name = "\"city_name\"", nullable = false)
+  @Column(name = "\"city_name\"", nullable = true)
   private String cityName;
 
-  @Column(name = "\"country_code\"", nullable = false)
+  @Column(name = "\"country_code\"", nullable = true)
   private String countryCode;
 
-  @Column(name = "\"district\"", nullable = false)
+  @Column(name = "\"district\"", nullable = true)
   private String district;
 
-  @Column(name = "\"city_population\"", nullable = false)
+  @Column(name = "\"city_population\"", nullable = true)
   private Integer cityPopulation;
 
   @ManyToOne
-  @JoinColumn(name = "`country_code`", insertable = false, updatable = false)
+  @JoinColumn(name = "`country_code`")
   private TblCountry tblCountry;
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Service
-public interface RegistCountryService {
+public interface CountryService {
   public @ResponseBody String addNewCountry(
     @RequestParam String countryCode,
     @RequestParam String countryName

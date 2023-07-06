@@ -2,13 +2,13 @@ package com.example.service.impl;
 
 import com.example.entity.TblCountry;
 import com.example.repository.TblCountryRepository;
-import com.example.service.RegistCountryService;
+import com.example.service.CountryService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RegistCountryServiceImpl implements RegistCountryService {
+public class CountryServiceImpl implements CountryService {
 
   @Autowired
   private TblCountryRepository tblCountryRepository;
