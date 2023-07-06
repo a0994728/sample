@@ -1,9 +1,15 @@
 package com.example.repository;
 
 import com.example.entity.TblCountry;
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TblCountryRepository
-  extends CrudRepository<TblCountry, Integer> {}
+  extends JpaRepository<TblCountry, Integer> {
+  public TblCountry findByCountryCode(String countryCode);
+
+  public List<TblCountry> findByCountryName(String countryName);
+  // public List<TblCountry> searchCountryByName(TblCountry tblCountry);
+}

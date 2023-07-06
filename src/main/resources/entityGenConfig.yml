@@ -7,4 +7,15 @@ jdbcSettings:
 
 # 生成したコードを置く package を指定
 packageName: "com.example.entity"
-outputDirectory: "D:/programing/sample/src/main/java"
+
+# java等のインストールドライブとprojectのドライブが異なるため、entity生成先をフルパスで指定（変数化したい）
+outputDirectory: "D:/programing/github/sample/src/main/java"
+
+# TblCity entityにTblCountryを付与する
+additionalCodeRules:
+  - className: "TblCity"
+    # position: "Bottom"
+    code: |
+            @ManyToOne
+            @JoinColumn(name = "`country_code`")
+            private TblCountry tblCountry;
