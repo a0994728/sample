@@ -51,16 +51,6 @@ public class CountryServiceImpl implements CountryService {
        */
       Specification.where(countryNameContains(req.getCountryName()))
     );
-    List<TblCountry> trimedList = new ArrayList<TblCountry>();
-    // レスポンスの見栄えが悪いのでトリミングする（テーブルいじるでも可）
-    for (TblCountry item : result) {
-      item.setCountryName(item.getCountryName().trim());
-      item.setRegion(item.getRegion().trim());
-      item.setLocalName(item.getLocalName().trim());
-      item.setGovernmentForm(item.getGovernmentForm().trim());
-      item.setHeadOfState(item.getHeadOfState().trim());
-      trimedList.add(item);
-    }
 
     res.setListTblCountry(result);
     res.setNumberOfCountry(result.size());
