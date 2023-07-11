@@ -10,6 +10,7 @@ import com.example.model.GetAllCountriesRequestBody;
 import com.example.model.GetAllCountriesResponseBody;
 import com.example.repository.TblCountryRepository;
 import com.example.service.CountryService;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class CountryServiceImpl implements CountryService {
     tblCountry.setCountryCode(req.getCountryCode());
     tblCountry.setCountryName(req.getCountryName());
     tblCountryRepository.save(tblCountry);
+    tblCountryRepository.save(tblCountry);
 
     result.setDetail("0");
     return result;
@@ -43,8 +45,23 @@ public class CountryServiceImpl implements CountryService {
     System.out.println("getAllCountries called");
 
     List<TblCountry> result = tblCountryRepository.findAll(
+      /**
+       * reqにcountryNameがなければnullとなり、全検索
+       * 何かしら文字が入っていれば部分一致検索
+       */
       Specification.where(countryNameContains(req.getCountryName()))
     );
+    List<TblCountry> trimedList = new ArrayList<TblCountry>();
+    // レスポンスの見栄えが悪いのでトリミングする（テーブルいじるでも可）
+    for (TblCountry item : result) {
+      item.setCountryName(item.getCountryName().trim());
+      item.setRegion(item.getRegion().trim());
+      item.setLocalName(item.getLocalName().trim());
+      item.setGovernmentForm(item.getGovernmentForm().trim());
+      item.setHeadOfState(item.getHeadOfState().trim());
+      trimedList.add(item);
+    }
+
     res.setListTblCountry(result);
     res.setNumberOfCountry(result.size());
     res.setDetail("0");

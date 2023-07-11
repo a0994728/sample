@@ -18,8 +18,6 @@ import org.springframework.data.jpa.domain.Specification;
 // @Data
 public class CountrySpecifications {
 
-  // private GetAllCountriesRequestBody getAllCountriesRequestBody;
-
   public static Specification<TblCountry> countryNameContains(
     String countryName
   ) {
@@ -32,6 +30,11 @@ public class CountrySpecifications {
           CriteriaQuery<?> query,
           CriteriaBuilder cb
         ) {
+          /**
+           *  判定するための属性（root.getの引数）に、リクエストボディ内のcountryName前後に「%」を付与した文字列を設定する
+           *  →「%」を消せば完全一致検索になる
+           */
+
           return cb.like(root.get("countryName"), "%" + countryName + "%");
         }
       };
