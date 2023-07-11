@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "64bde90d-5570-4f99-8328-decfd0b52231",
+		"name": "demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28305281"
+	},
+	"item": [
+		{
+			"name": "findAll",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"countryName\":\"c\",\r\n    \"sortType\":\"1\",\r\n    \"secondSort\":\"countryName\",\r\n    \"firstSort\":\"region\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/demo/all",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"demo",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "alllanguage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/demo/all",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"demo",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{local}}/demo/add",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"demo",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "selectName",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "countryCode",
+							"value": "aav",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{local}}/demo/selectName",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"demo",
+						"selectName"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tset_is_official",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "isOfficial",
+							"value": "T",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{local}}/demo/test_is_official",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"demo",
+						"test_is_official"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "select",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "countryCode",
+							"value": "aav",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{local}}/demo/selectName",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"demo",
+						"selectName"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "detail_city",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"cityId\":200\r\n}"
+				},
+				"url": {
+					"raw": "{{local}}/demo/detail_city",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"demo",
+						"detail_city"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lang_count",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"cityId\":200\r\n}"
+				},
+				"url": {
+					"raw": "{{local}}/demo/detail_city",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"demo",
+						"detail_city"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

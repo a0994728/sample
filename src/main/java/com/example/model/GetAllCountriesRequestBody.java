@@ -10,4 +10,8 @@ import lombok.Setter;
 public class GetAllCountriesRequestBody {
 
   private String countryName;
+
+  private String sortType;
+  private String firstSort;
+  private String secondSort;
 }

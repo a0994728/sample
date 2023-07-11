@@ -9,11 +9,13 @@ import com.example.model.AddNewCountryResponseBody;
 import com.example.model.GetAllCountriesRequestBody;
 import com.example.model.GetAllCountriesResponseBody;
 import com.example.repository.TblCountryRepository;
+import com.example.repository.helper.CountrySort;
 import com.example.service.CountryService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -44,13 +46,28 @@ public class CountryServiceImpl implements CountryService {
     GetAllCountriesResponseBody res = new GetAllCountriesResponseBody();
     System.out.println("getAllCountries called");
 
-    List<TblCountry> result = tblCountryRepository.findAll(
-      /**
-       * reqにcountryNameがなければnullとなり、全検索
-       * 何かしら文字が入っていれば部分一致検索
-       */
-      Specification.where(countryNameContains(req.getCountryName()))
+    List<TblCountry> result = new ArrayList<TblCountry>();
+    Specification<TblCountry> spec = Specification.where(
+      countryNameContains(req.getCountryName())
     );
+    Sort sort = CountrySort.createSort(req);
+    if (sort != null) {
+      result =
+        tblCountryRepository.findAll(
+          /**
+           * reqにcountryNameがなければnullを返却するようなSpecificationとなり、全検索
+           * 何かしら文字が入っていれば部分一致検索
+           */
+          spec,
+          /**
+           * 取得結果のソートも、findAllの引数に設定することで実装可能（リクエストに含ませれば呼び出し側で制御できる）
+           * 第一ソートregion、第二ソートcountryNameで昇順
+           */
+          sort
+        );
+    } else {
+      result = tblCountryRepository.findAll(spec);
+    }
 
     res.setListTblCountry(result);
     res.setNumberOfCountry(result.size());
