@@ -1,13 +1,16 @@
 package com.example.demo.controller;
 
 import com.example.entity.TblCountry;
+import com.example.entity.TblCountryLanguage;
 import com.example.model.AddNewCountryRequestBody;
 import com.example.model.AddNewCountryResponseBody;
 import com.example.model.DetailCityRequestBody;
 import com.example.model.DetailCityResponseBody;
+import com.example.model.GetAllCountriesRequestBody;
 import com.example.model.GetAllCountriesResponseBody;
 import com.example.service.CityService;
 import com.example.service.CountryService;
+import com.example.service.LanguageService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +30,9 @@ public class DemoController {
   @Autowired
   private CityService cityService;
 
+  @Autowired
+  private LanguageService languageService;
+
   @PostMapping(path = "/add", consumes = "application/json")
   public AddNewCountryResponseBody addNewCountry(
     @RequestBody AddNewCountryRequestBody req
@@ -34,9 +40,11 @@ public class DemoController {
     return countryService.addNewCountry(req);
   }
 
-  @GetMapping(path = "/all")
-  public GetAllCountriesResponseBody getAllCountries() {
-    return countryService.getAllCountries();
+  @PostMapping(path = "/all", consumes = "application/json")
+  public GetAllCountriesResponseBody getAllCountries(
+    @RequestBody GetAllCountriesRequestBody req
+  ) {
+    return countryService.getAllCountries(req);
   }
 
   @PostMapping(path = "/select")
@@ -54,5 +62,10 @@ public class DemoController {
     @RequestBody DetailCityRequestBody req
   ) {
     return cityService.selectDetailCity(req);
+  }
+
+  @GetMapping(path = "/all_language")
+  public List<TblCountryLanguage> findAllLanguages() {
+    return languageService.findAllLanguages();
   }
 }

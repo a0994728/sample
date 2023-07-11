@@ -13,8 +13,11 @@ outputDirectory: "D:/programing/github/sample/src/main/java"
 
 interfaceRules:
   # If you just specify the interfaces, all the generated classes'll implement the interfaces.
-- interfaces: [{name: "java.io.Serializable"}]
+  - interfaces: [{name: "java.io.Serializable"}]
 
+classAnnotationRules:
+  - annotations:
+    - className: "lombok.Builder"
 # TblCity entityにTblCountryを付与する
 additionalCodeRules:
   - className: "TblCity"

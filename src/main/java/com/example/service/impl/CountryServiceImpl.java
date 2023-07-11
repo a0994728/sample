@@ -1,13 +1,19 @@
 package com.example.service.impl;
 
+import static com.example.repository.helper.CountrySpecifications.*;
+
+import com.example.entity.TblCity;
 import com.example.entity.TblCountry;
 import com.example.model.AddNewCountryRequestBody;
 import com.example.model.AddNewCountryResponseBody;
+import com.example.model.GetAllCountriesRequestBody;
 import com.example.model.GetAllCountriesResponseBody;
 import com.example.repository.TblCountryRepository;
 import com.example.service.CountryService;
 import java.util.List;
+import java.util.function.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -30,13 +36,19 @@ public class CountryServiceImpl implements CountryService {
   }
 
   @Override
-  public GetAllCountriesResponseBody getAllCountries() {
-    GetAllCountriesResponseBody result = new GetAllCountriesResponseBody();
+  public GetAllCountriesResponseBody getAllCountries(
+    GetAllCountriesRequestBody req
+  ) {
+    GetAllCountriesResponseBody res = new GetAllCountriesResponseBody();
     System.out.println("getAllCountries called");
-    List<TblCountry> req = tblCountryRepository.findAll();
-    result.setListTblCountry(req);
-    result.setNumberOfCountry(req.size());
-    return result;
+
+    List<TblCountry> result = tblCountryRepository.findAll(
+      Specification.where(countryNameContains(req.getCountryName()))
+    );
+    res.setListTblCountry(result);
+    res.setNumberOfCountry(result.size());
+    res.setDetail("0");
+    return res;
   }
 
   @Override
