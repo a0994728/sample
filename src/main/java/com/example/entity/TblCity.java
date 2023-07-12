@@ -6,7 +6,7 @@ import java.sql.*;
 import lombok.Data;
 
 @Data
-@Entity(name = "com.example.entity.TblCity")
+@Entity
 @Table(name = "tbl_city")
 public class TblCity implements Serializable {
 

@@ -5,7 +5,7 @@ import java.sql.*;
 import lombok.Data;
 
 @Data
-@Entity(name = "com.example.entity.Test")
+@Entity
 @Table(name = "test")
 public class Test {
 
