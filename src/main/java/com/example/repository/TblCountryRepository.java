@@ -19,9 +19,7 @@ public interface TblCountryRepository
    * JPQL内の「:countryName」は@Param("countryName")を付与した引数で紐づける
    *
    */
-  @Query(
-    "SELECT c FROM com.example.entity.TblCountry c WHERE c.countryName = :countryName"
-  )
+  @Query("SELECT c FROM TblCountry c WHERE c.countryName = :countryName")
   public List<TblCountry> findByCountryName(
     @Param("countryName") String countryName
   );
